@@ -156,7 +156,7 @@ namespace HoloLensCommander
         /// <returns>Task object used for tracking method completion.</returns>
         internal async Task InstallAppAsync(AppInstallFiles installFiles)
         {
-            await this.ViewModel.InstallAppAsync(installFiles.AppPackageFileName);
+            await this.ViewModel.InstallAppAsync(installFiles);
         }
 
         /// <summary>

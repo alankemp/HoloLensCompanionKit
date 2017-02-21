@@ -172,15 +172,15 @@ namespace HoloLensCommander
         /// </summary>
         /// <param name="appPackage">The full path to the application package.</param>
         /// <returns>Task object used for tracking method completion.</returns>
-        public async Task InstallApplicationAsync(string appPackage)
+        public async Task InstallApplicationAsync(AppInstallFiles installFiles)
         {
             await Task.Run(
                 async () =>
                 {
                     await this.devicePortal.InstallApplicationAsync(
                         null,
-                        appPackage,
-                        new List<string>());
+                        installFiles.AppPackageFileName,
+                        installFiles.AppDependencyFileNames);
                 });
         }
 

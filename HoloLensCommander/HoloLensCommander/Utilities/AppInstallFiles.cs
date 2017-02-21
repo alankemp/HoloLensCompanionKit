@@ -23,7 +23,7 @@ namespace HoloLensCommander
         /// </summary>
         public List<string> AppDependencyFileNames
         {
-            get; private set;
+            get; set;
         }
 
         /// <summary>

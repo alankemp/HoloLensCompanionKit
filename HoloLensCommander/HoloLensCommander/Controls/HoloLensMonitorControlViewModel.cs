@@ -233,19 +233,19 @@ namespace HoloLensCommander
         /// </summary>
         /// <param name="appPackage">The fully qualified path to the application package.</param>
         /// <returns>Task object used for tracking method completion.</returns>
-        internal async Task InstallAppAsync(string appPackage)
+        internal async Task InstallAppAsync(AppInstallFiles installFiles)
         {
             if (this.IsConnected && this.IsSelected)
             {
                 try
                 {
-                    await this.holoLensMonitor.InstallApplicationAsync(appPackage);
+                    await this.holoLensMonitor.InstallApplicationAsync(installFiles);
                 }
                 catch(Exception e)
                 {
                     this.StatusMessage = string.Format(
                         "Failed to install {0} - {1}",
-                        appPackage,
+                        installFiles.AppPackageFileName,
                         e.Message);
                 }
             }

@@ -43,9 +43,23 @@ namespace HoloLensCommander
             IReadOnlyList<StorageFile> files = await folder.GetFilesAsync();
             StorageFile file = files.FirstOrDefault(f => f.Name.EndsWith(".appxbundle"));
 
-            if (file != null)
+            if (file == null)
             {
-                this.AppPackageFile = file.Path;
+                return;
+            }
+
+            this.AppPackageFile = file.Path;
+
+            StorageFolder dependenciesFolder = await folder.GetFolderAsync("Dependencies\\x86");
+
+            IReadOnlyList<StorageFile> dependencies = await dependenciesFolder.GetFilesAsync();
+
+            foreach (StorageFile dependency in dependencies)
+            {
+                if (dependency.Name.EndsWith(".appx"))
+                {
+                    this.AppDependencyFileNames.Add(dependency.Path);
+                }
             }
         }
     }

@@ -31,6 +31,7 @@ namespace HoloLensCommander
         internal void UpdateUserData(AppInstallFiles installFiles)
         {
             installFiles.AppPackageFileName = AppPackageFile;
+            installFiles.AppDependencyFileNames = AppDependencyFileNames;
         }
 
         /// <summary>
